@@ -1,0 +1,44 @@
+DEVUAN minimal iso (Virtual Box)
+
+SU
+
+1. ip link #Просмотр сетевых интерфейсов (СИ)
+2. ping 8.8.8.8 #Проверка доступности DNS-сервера google
+3. echo 'nameserver 8.8.8.8' > /etc/resolv.conf #адрес сервера имен в Интернет, 
+который будет обрабатывать запросы от резолвера
+4. ping google.com #Проверка доступности серверов google по символьному имени
+5. echo -e 'deb http://auto.mirror.devuan.org/merged jessie main\ndeb-src http://auto.mirror.devuan.org/merged jessie main' >> etc/apt/sources.list # URI(URL) 
+источники пакетов (требуется для APT)
+6. КОМАНДА ДЛЯ КОММЕНТИРОВАНИЯ 5 СТРОКИ
+7. apt-get update #APT (Advanced Package Tool) ресинхронизация пакетных индексов файлов из их источников
+8. apt full-upgrade #Обновление всех пакетов до новых версий из sources.list
+9. apt-get install  sudo xserver-xorg-video-vmware xorg suckless-tools make pkg-config libfontconfig1-dev libX11-dev build-essential git libxft-dev dwm libxinerama-dev libasound2-dev
+10. echo -e 'statusbar&\nexec dwm' > /home/kirill/.xinitrc
+10. ПРОПИСАТЬ ЧЕРЕЗ КОМАНДУ ПОЛЬЗОВАТЕЛЯ СУДО
+11. mkdir /etc/ИСХОДНИКИ && cd /etc/ИСХОДНИКИ/
+12. wget https://dl.suckless.org/st/st-0.8.2.tar.gz && tar -xvf st-0.8.2.tar.gz && cd st-0.8.2 && make clean install && cd .. && rm -r st-0.8.2.tar.gz #Чистая установка st
+13. git clone https://salsa.debian.org/hle/dwm && git clone https://github.com/snobb/dwm-statusbar.git #Загрузка исходников dwm-statusbar и dwm
+14. НАСТРОИТЬ КОНФИГИ В DWM и dwm-statusbar
+15. 
+
+УСТАНОВКА SEAMONKEY
+1. Edit your /etc/apt/sources.list file and add the following line to it: deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main
+2. If not already installed, may need to run sudo apt install dirmngr to import keys
+3. Apt will redirect to a secure URL https://versaweb.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt when you run apt update, which requires apt-transport-https to be installed with sudo apt install apt-transport-https
+4. Run sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2667CA5C
+5. Run sudo apt update
+6. Run sudo apt install seamonkey-mozilla-build
+
+
+УСТАНОВКА GO
+
+16. cd /etc/ИСХОДНИКИ & make clean install
+17. wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
+18. tar -xvf go1.13.3.linux-amd64.tar.gz
+19. sudo mv go /usr/local
+20. export GOROOT=/usr/local/go
+21. export GOPATH=$HOME/Projects/Proj1
+22. export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+23. go version
+
+xev - вывод нажатиый клавиш
